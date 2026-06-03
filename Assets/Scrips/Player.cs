@@ -1,11 +1,18 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     [SerializeField]
     private Transform gunPosition;
-    ///* Nuevas
+    ///* Solo una
+    [SerializeField]
+    private InputManager inputManager;
+    ///* MMMMMM
+    [SerializeField]
+    private Text ammoText;
+    /// * MMMMMMM
     [SerializeField]
     private UnityEvent onGunGrabbed;
     [SerializeField]
@@ -22,8 +29,31 @@ public class Player : MonoBehaviour
         {  ///* este ya no
         ///*other.GetComponent<Gun>().GrabGun(gunPosition);
             currentGun = other.GetComponent<Gun>();
-            currentGun. GrabGun (gunPosition);
+            currentGun.GrabGun(gunPosition, ammoText);
+        ///*currentGun.GrabGun(gunPosition);
             onGunGrabbed ?. Invoke();
+        ///*currentGun.OnGunEmpty+= DropGun; ///* QUE Cansado
+        ///*currentGun.OnGunEmpty.AddListener(() => { DropGun(); });
+            currentGun.OnGunEmpty.AddListener(DropGun);
+            
         }
+    } ///* De la Nueva que pusimos
+    private  void Update()
+    {
+        if (currentGun != null)
+        {
+            currentGun.HandleFire(inputManager.LeftButtonPressed, inputManager.LeftButtonHeld);
+            if (inputManager.RightButtonPressed) ///* otro if/si
+            {
+                currentGun. ChargeGun();
+            }
+        }
+    }///* estoy cansado de agregarmecanicas
+    public void DropGun()
+    {
+        if (currentGun == null) return;
+        Destroy(currentGun.gameObject);
+        currentGun = null;
+        onGunDropped ?. Invoke();
     }
 }
