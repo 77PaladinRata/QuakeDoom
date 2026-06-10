@@ -56,6 +56,13 @@ public class Gun : MonoBehaviour
     private void UpdateAmmoText()
     {
         ammoText.text = $"{cartridgeBullets} / {totalBullets}";
+    } ///* para que si se elimine
+    private void DamangeEnemy(GameObject enemy)
+    {
+        if (enemy.CompareTag("Enemy"))
+        {
+            enemy.GetComponent<Health>().TakeDamage(gunData.damage);
+        }
     }
     public void Shoot()
     {
@@ -64,7 +71,8 @@ public class Gun : MonoBehaviour
         Vector3 targetPoint;
         if(Physics.Raycast(ray, out RaycastHit hit, rayDistance))
         {
-            targetPoint = hit.point;
+            targetPoint = hit.point;  ///* Para que dispare
+            DamangeEnemy(hit.collider.gameObject);
         }
         else
         {
@@ -73,6 +81,7 @@ public class Gun : MonoBehaviour
         Vector3 direction = (targetPoint - transform.position).normalized;
         bulletPivot.forward = direction;
         GameObject bullet = Instantiate(bulletPrefab, bulletPivot.position, bulletPivot.rotation);
+        ///* bullet.GetComponent<Bullet>().Damage = gunData.damage; ///* Esta ya No
         bullet.transform.LookAt(targetPoint);
         SoundManager.instance.Play(gunData.shootSoundName);///*shots and drink
         animator.Play("Shoot", 0, 0f);

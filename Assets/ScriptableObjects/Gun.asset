@@ -19,5 +19,5 @@ MonoBehaviour:
   cartridgeSize: 10
   gunType: 1
   shootSoundName: NOLasser
-  reloadSoundName: Recargar
+  reloadSoundName: shotgun
   dropSoundName: SteampunkRecoger

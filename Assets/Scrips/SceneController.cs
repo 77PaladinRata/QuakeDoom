@@ -1,10 +1,19 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class SceneController : MonoBehaviour
 {
     [SerializeField]
     private Animator fade;
+    ///* sin reinico eso creo
+    [SerializeField]
+    private UnityEvent onSceneStart;
+    private void Start()
+    {
+        onSceneStart?.Invoke();
+    }
+    ///* un poco de pausa despues de perder
     public void LoadScene(string sceneName)
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);

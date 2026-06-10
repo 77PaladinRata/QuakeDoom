@@ -20,7 +20,8 @@ public class Player : MonoBehaviour
     private Gun currentGun;
     private void Start()
     {
-        onGunDropped ?. Invoke();
+        onGunDropped ?. Invoke(); ///*para que no me mate tan rapido
+        GetComponent<Health>().InitializeHealth();
     }
     ///*el anterior
     private void OnTriggerEnter(Collider other)
@@ -55,5 +56,10 @@ public class Player : MonoBehaviour
         Destroy(currentGun.gameObject);
         currentGun = null;
         onGunDropped ?. Invoke();
+    }///* el enemigo para el player
+    public void PushBack(Transform enemy, float force)
+    {
+        Vector3 pushDirection = (transform.position - enemy.position).normalized;
+        GetComponent<Rigidbody>().AddForce(pushDirection * force, ForceMode. Impulse);
     }
 }
