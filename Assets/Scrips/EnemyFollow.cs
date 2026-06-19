@@ -27,7 +27,7 @@ public class EnemyFollow : Enemy ///*MonoBehaviour ///*Agregando Enemy
         base.OnEnable();
         animator.Play("Appear", 0, 0f); ///* Aparecer con sonido
         isFollowing = true; ///* Agregando el nombre de sonido
-        SoundManager. instance.Play("Takopi_appear"); ///*Aparecer
+        SoundManager.instance.Play("Takopi_appear"); ///*Aparecer
     }
     public override void TakeDamage()
     {                           ///* Agregando el nombre de sonido

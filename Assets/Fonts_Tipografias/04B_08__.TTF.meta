@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7f3a6d82831add24ca81b564124f80be
+guid: 294c56a0a55c9c74581093aa34e0472e
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - SAINT by echodesign__
+  - 04b08
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

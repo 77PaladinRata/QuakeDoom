@@ -25,8 +25,8 @@ public class Player : MonoBehaviour
     }
     ///*el anterior
     private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Gun"))
+    {   ///* Agregandole para  Cambiar el arma Automatica
+        if (other.CompareTag("Gun") && currentGun == null) ///* la otra arma
         {  ///* este ya no
         ///*other.GetComponent<Gun>().GrabGun(gunPosition);
             currentGun = other.GetComponent<Gun>();

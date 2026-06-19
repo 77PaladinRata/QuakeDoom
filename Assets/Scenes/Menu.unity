@@ -336,7 +336,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7f3a6d82831add24ca81b564124f80be, type: 3}
+    m_Font: {fileID: 12800000, guid: 1d959e6e003d9024a8a6e1d79c021ed0, type: 3}
     m_FontSize: 200
     m_FontStyle: 1
     m_BestFit: 1
@@ -427,7 +427,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7f3a6d82831add24ca81b564124f80be, type: 3}
+    m_Font: {fileID: 12800000, guid: 1d959e6e003d9024a8a6e1d79c021ed0, type: 3}
     m_FontSize: 200
     m_FontStyle: 1
     m_BestFit: 1
@@ -2894,7 +2894,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 862e74900ccabc94e9c85c7b62f64361, type: 3}
+    m_Font: {fileID: 12800000, guid: f4ffeb4b31c93b541a1224e05ec20106, type: 3}
     m_FontSize: 82
     m_FontStyle: 1
     m_BestFit: 0
@@ -2945,6 +2945,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneController
   fade: {fileID: 495822631}
+  onSceneStart:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1491300690
 Transform:
   m_ObjectHideFlags: 0
