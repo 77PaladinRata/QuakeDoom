@@ -22,8 +22,14 @@ public class Health : MonoBehaviour
     private void UpdateHealthBar()
     {
         healthBar.value = currentHealth / maxHealth;
-    }
-    public void TakeDamage(float damage)
+    } ///* Agregando para que se escuche el sonido
+    public void Heal(float amount)
+    {
+        currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        UpdateHealthBar();
+    } ///* No olvidad Agregar Extremidades
+    public void TakeDamage(float damage) 
     {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);

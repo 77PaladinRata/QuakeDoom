@@ -5,14 +5,18 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float speed = 20f;
     ///* Agregando faltantes para que se mueva
-    private float damage = 10f;
+    ///* private float damage = 10f;
+    protected float damage = 10f;
     public float Damage { set { damage = value; } }
-    void Awake()
+    ///* void Awake()
+    void OnEnable()
     {
         GetComponent<Rigidbody>().linearVelocity = transform. forward * speed;
     }
     ///* Supuestamente con esto se tiene que mover
-    private void OnCollisionEnter(Collision collision) ///* estas no
+    ///* cambiando titulos
+///*private void ///* cambiando cosas
+    public virtual void OnCollisionEnter(Collision collision)
     {
         ///*if (collision.gameObject.CompareTag("Enemy"))
         ///*{
