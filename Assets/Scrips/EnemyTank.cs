@@ -12,15 +12,15 @@ public class EnemyTank : Enemy
     [SerializeField]
     private GameObject bulletPrefab;
     [SerializeField]
-    private float speed = 10f;
-    private bool isShooting = false;
-    private float nextFireTime = 0f;
+    private float speed = 10f; ///* estaba n 10f
+    private bool isShooting = false; ///* EStaba en 0F
+    private float nextFireTime = 10f; ///* PERO lo cambie a 3f
     public override void OnEnable()
     {
         base.OnEnable();
         nextFireTime = 0f; ///* Para los Sonidos
         animator.Play("Appear, 1 0f");
-        SoundManager. instance.Play("Wizard_appaer"); ///*sonido MAGO *********************************
+        SoundManager. instance.Play("wizard_ appear"); ///*sonido MAGO *********************************
         transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
     }
     private bool IsInRange()
@@ -53,12 +53,12 @@ public class EnemyTank : Enemy
     }
     private IEnumerator ShootCoroutine()
     {
-        SoundManager. instance.Play("Wizard_attack"); ///* sonido MAGO *******************
-        animator.Play("PrepareShoot", 0, 0f);
+        SoundManager. instance.Play("wizard_ prepare shoot"); ///* sonido MAGO ********Recarga-Escopeta****wizard_ PrepareShoot********
+        animator.Play("PrepareShoot", 0, 0f); ///* estaban en 0 y  0f
         yield return null;
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        animator.Play("Shoot", 0, 0f);
-        SoundManager.instance.Play("Wizard_attack");///* SONIDO MAGO
+        animator.Play("Shoot", 0, 0f); ///* estaban en 0 y 0f
+        SoundManager.instance.Play("wizard_ Shoot");///* SONIDO MAGO *******************Dispara-Escopeta********
         ///* Agregando Nuevas
         Vector3 direction = (player.transform.position - shootPivot.position).normalized;
         shootPivot. forward = direction;
@@ -71,6 +71,6 @@ public class EnemyTank : Enemy
     public override void Die()
     {
         base.Die();
-        SoundManager.instance.Play("Wizard_die"); ///* Sonido MAGO
+        SoundManager.instance.Play("wizard_ die"); ///* Sonido MAGO ***********************
     }
 }

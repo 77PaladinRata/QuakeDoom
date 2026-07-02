@@ -12,8 +12,11 @@ public class Health : MonoBehaviour
     private UnityEvent onDeath;
     [SerializeField]
     private UnityEvent onDamageTaken;
-    private float currentHealth;
-    public float CurrentHealth => currentHealth;
+    [SerializeField] ////*ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+    private UnityEvent<Transform> onHeal; ///* ÑÑÑÑÑÑÑÑ
+    private float currentHealth; 
+    public float CurrentHealth => currentHealth;///*PPP
+    public float MaxHealth => maxHealth; ///*PPPP
     public void InitializeHealth()
     {
         currentHealth = maxHealth;
@@ -28,6 +31,7 @@ public class Health : MonoBehaviour
         currentHealth += amount;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         UpdateHealthBar();
+        onHeal ?. Invoke(transform); ////*ÑÑÑÑÑÑÑÑÑÑÑÑ
     } ///* No olvidad Agregar Extremidades
     public void TakeDamage(float damage) 
     {
