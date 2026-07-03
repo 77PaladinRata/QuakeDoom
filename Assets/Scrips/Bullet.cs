@@ -4,6 +4,10 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField]
     private float speed = 20f;
+    [SerializeField]
+    private GameObject enemyHitParticles;
+    [SerializeField]
+    private GameObject wallHitParticles;
     ///* Agregando faltantes para que se mueva
     ///* private float damage = 10f;
     protected float damage = 10f;
@@ -21,27 +25,19 @@ public class Bullet : MonoBehaviour
         rb.linearVelocity = transform.forward * speed;
     }
     public virtual void OnCollisionEnter(Collision collision)
-    {
+    {///* Agregando muchas cosas para la bala
+        string tag = collision.gameObject.tag;
+        if (tag == "Enemy")
+        {                                   ///*Nombre del sonido 
+            SoundManager.instance.Play("Impacto Carne"); ///*bullet_hit_enemy
+            PoolManager.Instance.GetObject(enemyHitParticles, transform.position);
+        }
+        else
+        {                               ///*Nombre del sonido 
+            SoundManager.instance.Play("Impacto Metal"); ///*bullet_hit_wall
+            PoolManager. Instance.GetObject(wallHitParticles, transform.position);
+        }
         gameObject.SetActive(false);
     }
-    ///* Para que no se trabe ===============================
-
-      ///*void OnEnable()
-      ///*{
-          ///*GetComponent<Rigidbody>().linearVelocity = transform. forward * speed;
-      ///*}
-    ///* Supuestamente con esto se tiene que mover
-    ///* cambiando titulos
-
-///*private void ///* cambiando cosas
-      ///*public virtual void OnCollisionEnter(Collision collision)
-      ///*{
-        ///*if (collision.gameObject.CompareTag("Enemy"))
-        ///*{
-            ///*collision.gameObject.GetComponent<Health>().TakeDamage(damage);
-        ///*}   ///*collision
-        
-        ///* Destroy(gameObject);
-          ///*gameObject.SetActive(false);
-      ///*}
+    
 }
