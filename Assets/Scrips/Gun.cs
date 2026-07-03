@@ -80,9 +80,13 @@ public class Gun : MonoBehaviour
         }
         Vector3 direction = (targetPoint - transform.position).normalized;
         bulletPivot.forward = direction;
-        GameObject bullet = Instantiate(bulletPrefab, bulletPivot.position, bulletPivot.rotation);
+        ///* GameObject bullet = Instantiate(bulletPrefab, bulletPivot.position, bulletPivot.rotation);
+        GameObject bullet = PoolManager. Instance.GetObject(bulletPrefab, bulletPivot.position);
+        bullet.SetActive(false);
+        bullet.transform.position = bulletPivot.position; ///* cambioar transform.rotation a transform.position
+        bullet.transform. LookAt(targetPoint);
+        bullet.SetActive(true);
         ///* bullet.GetComponent<Bullet>().Damage = gunData.damage; ///* Esta ya No
-        bullet.transform.LookAt(targetPoint);
         SoundManager.instance.Play(gunData.shootSoundName);///*shots and drink
         animator.Play("Shoot", 0, 0f);
     }
