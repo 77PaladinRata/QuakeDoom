@@ -12,14 +12,32 @@ public class Enemy : MonoBehaviour
     protected Transform player;
     private UnityEvent onDied = new UnityEvent();
     public UnityEvent OnDied => onDied;
+    protected bool didWin = false; ///* perder menu
+    protected Health playerHealth; //* perder health
     private void Awake()
     {
         health = GetComponent<Health>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerHealth = player.GetComponent<Health>();   ///*
+    }
+    protected bool CheckWin() ///* procteccion de balas
+    {
+        if (playerHealth. IsDead && !didWin)
+        {
+            StopAllCoroutines();
+            didWin = true;
+            Dance();
+        }
+        return playerHealth. IsDead;
     }
     public virtual void OnEnable()
     {
         health.InitializeHealth();
+        didWin = false; ///*
+    }
+    public virtual void Dance() ///* que el enemigo baile humillandote
+    {
+        animator.Play("Dance", 0, 0f);
     }
     public virtual void TakeDamage()
     {

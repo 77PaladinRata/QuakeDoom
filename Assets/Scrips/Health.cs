@@ -17,6 +17,7 @@ public class Health : MonoBehaviour
     private float currentHealth; 
     public float CurrentHealth => currentHealth;///*PPP
     public float MaxHealth => maxHealth; ///*PPPP
+    public bool IsDead => currentHealth <= 0f;
     public void InitializeHealth()
     {
         currentHealth = maxHealth;

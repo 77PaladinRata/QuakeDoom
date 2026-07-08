@@ -30,6 +30,7 @@ public class EnemyTank : Enemy
     private void Update()
     {   ///* No habra problema con dos IFs
         if (health.CurrentHealth <= 0) return;
+        if (CheckWin()) return; ///* no era para tanto
         if (IsInRange())
         {
             isShooting = true;
@@ -52,8 +53,8 @@ public class EnemyTank : Enemy
         animator.Play("Walk");
     }
     private IEnumerator ShootCoroutine()
-    {
-        SoundManager. instance.Play("wizard_ prepare shoot"); ///* sonido MAGO ********Recarga-Escopeta****wizard_ PrepareShoot********
+    {            ///* Borrado por que suena Trabado
+        SoundManager. instance.Play(""); ///* sonido MAGO ********Recarga-Escopeta****wizard_ PrepareShoot********
         animator.Play("PrepareShoot", 0, 0f); ///* estaban en 0 y  0f
         yield return null;
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
