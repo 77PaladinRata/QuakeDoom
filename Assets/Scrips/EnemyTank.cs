@@ -19,7 +19,7 @@ public class EnemyTank : Enemy
     {
         base.OnEnable();
         nextFireTime = 0f; ///* Para los Sonidos
-        animator.Play("Appear, 1 0f");
+        animator.Play("Appaer, 1 0f");
         SoundManager. instance.Play("wizard_ appear"); ///*sonido MAGO *********************************
         transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
     }
@@ -35,16 +35,19 @@ public class EnemyTank : Enemy
         {
             isShooting = true;
             {
-                StartCoroutine(ShootCoroutine());
-                nextFireTime = Time. time + fireRate;
+                isShooting = true;
+                if (Time.time >= nextFireTime)
+                {
+                    StartCoroutine(ShootCoroutine());
+                    nextFireTime = Time. time + fireRate;
+                }
+                else if (!isShooting)
+                {
+                    FollowPlayer();
+                }
+                transform. LookAt(player.transform.position);
             }
-        ///* MOVIENDO los que ya estaban Abajo
-        }///* agregando if
-        else if (!isShooting)
-        {
-            FollowPlayer();
         }
-        transform.LookAt(player.transform.position);
     }
     private void FollowPlayer()
     {
@@ -54,7 +57,7 @@ public class EnemyTank : Enemy
     }
     private IEnumerator ShootCoroutine()
     {            ///* Borrado por que suena Trabado
-        SoundManager. instance.Play(""); ///* sonido MAGO ********Recarga-Escopeta****wizard_ PrepareShoot********
+        SoundManager. instance.Play("wizard_ PrepareShoot"); ///* sonido MAGO ********Recarga-Escopeta********wizard_ prepare shoot****
         animator.Play("PrepareShoot", 0, 0f); ///* estaban en 0 y  0f
         yield return null;
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
@@ -73,5 +76,6 @@ public class EnemyTank : Enemy
     {
         base.Die();
         SoundManager.instance.Play("wizard_ die"); ///* Sonido MAGO ***********************
+        animator.Play("Die", 0, 0f); 
     }
 }
