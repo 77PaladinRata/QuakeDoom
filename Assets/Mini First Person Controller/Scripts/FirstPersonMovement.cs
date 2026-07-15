@@ -14,9 +14,16 @@ public class FirstPersonMovement : MonoBehaviour
     Rigidbody rigidbody;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
+    private Vector3 knockbackVelocity = Vector3.zero; ///* codigo nuestro
+    [SerializeField]    ///* codigo nuestro
+    private float knockbackDamping = 8f;    
 
-
-
+    public void AddKnockback(Vector3 direction, float force) ///* codigo nuestro
+    {
+        direction.y = 0f;   ///* codigo nuestro
+        direction.Normalize();      ///* codigo nuestro
+        knockbackVelocity += direction * force; ///* codigo nuestro
+    }
     void Awake()
     {
         // Get the rigidbody on this.
@@ -35,10 +42,17 @@ public class FirstPersonMovement : MonoBehaviour
             targetMovingSpeed = speedOverrides[speedOverrides.Count - 1]();
         }
 
+        Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));                        ///* codigo nuestro
+        Vector3 movementVelocity = transform.rotation * new Vector3(input.x, 0, input.y) * targetMovingSpeed;       ///* codigo nuestro
+        Vector3 finalVelocity = movementVelocity + knockbackVelocity;                                               ///* codigo nuestro
+        finalVelocity.y = rigidbody.linearVelocity.y;                                                               ///* codigo nuestro
+        rigidbody.linearVelocity = finalVelocity;                                                                   ///* codigo nuestro
+        knockbackVelocity = Vector3.Lerp(knockbackVelocity, Vector3.zero, knockbackDamping * Time.fixedDeltaTime); ///* codigo nuestro
+
         // Get targetVelocity from input.
-        Vector2 targetVelocity =new Vector2( Input.GetAxis("Horizontal") * targetMovingSpeed, Input.GetAxis("Vertical") * targetMovingSpeed);
+        ///* Vector2 targetVelocity =new Vector2( Input.GetAxis("Horizontal") * targetMovingSpeed, Input.GetAxis("Vertical") * targetMovingSpeed);
 
         // Apply movement.
-        rigidbody.linearVelocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.linearVelocity.y, targetVelocity.y);
+        ///* rigidbody.linearVelocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.linearVelocity.y, targetVelocity.y);
     }
 }

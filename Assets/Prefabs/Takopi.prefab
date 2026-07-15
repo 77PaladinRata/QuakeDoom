@@ -374,6 +374,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onHeal:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5678048510347365296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,7 +393,7 @@ MonoBehaviour:
   damage: 20
   speed: 3
   yPosition: 1
-  pushForce: 200
+  pushForce: 15
 --- !u!1 &7491069218861264948
 GameObject:
   m_ObjectHideFlags: 0

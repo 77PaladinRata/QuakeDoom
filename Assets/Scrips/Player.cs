@@ -20,9 +20,11 @@ public class Player : MonoBehaviour
     private Health health; ///* menu de perder
     private Rigidbody rb;
     public float CurrentHealth => health.CurrentHealth; ///* no tanto
+    private FirstPersonMovement firstPersonMovement;    ///* para que no se tambalee
     private Gun currentGun;
     private void Awake() ///* el menu de perder agregados
     {
+        firstPersonMovement = GetComponent<FirstPersonMovement>(); ///* sin torbulencia
         rb = GetComponent<Rigidbody>();
         health = GetComponent<Health>();
     }
@@ -69,7 +71,8 @@ public class Player : MonoBehaviour
     {
         Vector3 pushDirection = (transform.position - enemy.position).normalized;
         ///* GetComponent<Rigidbody>().AddForce(pushDirection * force, ForceMode. Impulse);
-        rb.AddForce(pushDirection * force, ForceMode.Impulse);
+        ///*rb.AddForce(pushDirection * force, ForceMode.Impulse);
+        firstPersonMovement.AddKnockback(pushDirection, force);
     }
     public void Die()
     {
