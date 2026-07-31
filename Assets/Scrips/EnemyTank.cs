@@ -12,6 +12,8 @@ public class EnemyTank : Enemy
     [SerializeField]
     private GameObject bulletPrefab;
     [SerializeField]
+    private GameObject fireParticlesPrefab;
+    [SerializeField]
     private float speed = 10f; ///* estaba n 10f
     private bool isShooting = false; ///* EStaba en 0F
     private float nextFireTime = 10f; ///* PERO lo cambie a 3f
@@ -61,6 +63,7 @@ public class EnemyTank : Enemy
         animator.Play("PrepareShoot", 0, 0f); ///* estaban en 0 y  0f
         yield return null;
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        PoolManager. Instance.GetObject(fireParticlesPrefab, shootPivot.position);
         animator.Play("Shoot", 0, 0f); ///* estaban en 0 y 0f
         SoundManager.instance.Play("wizard_ Shoot");///* SONIDO MAGO *******************Dispara-Escopeta********
         ///* Agregando Nuevas

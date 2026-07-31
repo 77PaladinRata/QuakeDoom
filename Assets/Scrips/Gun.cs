@@ -9,14 +9,14 @@ public class Gun : MonoBehaviour
     private Animator animator;
     [SerializeField]
     private Rotate rotateScript;
-    ///* Poniendo cosas Nuevas
     [SerializeField]
     private GunData gunData;
     [SerializeField]
     private Transform bulletPivot;
     [SerializeField]
     private GameObject bulletPrefab;
-    ///* Balas sin sonido
+    [SerializeField]
+    private GameObject fireParticlesPrefab;
     private Text ammoText; ///* falto esta
     private float nextFireTime;
     private int totalBullets;
@@ -89,6 +89,7 @@ public class Gun : MonoBehaviour
     }
     public void Shoot()
     {
+        PoolManager.Instance.GetObject(fireParticlesPrefab, bulletPivot.position);
         float rayDistance = 1000f;
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         Vector3 targetPoint;
