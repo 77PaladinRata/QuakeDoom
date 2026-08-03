@@ -56,7 +56,7 @@ public class EnemyWalker : Enemy
     }
     private IEnumerator AttackCoroutine()
     {
-        SoundManager.instance.Play("Motocierra_Attack");    ///* Sonido ATAQUE********
+        SoundManager.instance.Play("Motocierra_Larga");    ///* Sonido ATAQUE*****Motocierra_Attack***
         animator.Play("Attack", 0, 0f);
         yield return new WaitForSeconds(attackTime);
         if (IsInDamageRange)

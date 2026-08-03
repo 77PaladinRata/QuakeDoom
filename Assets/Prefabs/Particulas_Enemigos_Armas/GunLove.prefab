@@ -9817,6 +9817,7 @@ GameObject:
   - component: {fileID: 2183131279624509874}
   - component: {fileID: 2486774303850674942}
   - component: {fileID: 3996416060607647214}
+  - component: {fileID: 3691079516560135654}
   m_Layer: 0
   m_Name: GunLove
   m_TagString: Untagged
@@ -14711,3 +14712,16 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!114 &3691079516560135654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8519123693758246334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a82185a36d131641aaa3892b9c8a8ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyInSeconds
+  secondsToDestroy: 2

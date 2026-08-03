@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 8dd2f17b6e3f8174390967bc55ead836, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -7560,80 +7560,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 299454339}
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
---- !u!1001 &508702391
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1879827041}
-    m_Modifications:
-    - target: {fileID: 100016, guid: ed66873f4ef9b634092062127db1b618, type: 3}
-      propertyPath: m_Name
-      value: Object3
-      objectReference: {fileID: 0}
-    - target: {fileID: 400016, guid: ed66873f4ef9b634092062127db1b618, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.4290955
-      objectReference: {fileID: 0}
-    - target: {fileID: 400016, guid: ed66873f4ef9b634092062127db1b618, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.4290953
-      objectReference: {fileID: 0}
-    - target: {fileID: 400016, guid: ed66873f4ef9b634092062127db1b618, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3.4290955
-      objectReference: {fileID: 0}
-    - target: {fileID: 400016, guid: ed66873f4ef9b634092062127db1b618, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -38.77
-      objectReference: {fileID: 0}
-    - target: {fileID: 400016, guid: ed66873f4ef9b634092062127db1b618, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 400016, guid: ed66873f4ef9b634092062127db1b618, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -91.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 400016, guid: ed66873f4ef9b634092062127db1b618, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 400016, guid: ed66873f4ef9b634092062127db1b618, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400016, guid: ed66873f4ef9b634092062127db1b618, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 400016, guid: ed66873f4ef9b634092062127db1b618, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400016, guid: ed66873f4ef9b634092062127db1b618, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400016, guid: ed66873f4ef9b634092062127db1b618, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 400016, guid: ed66873f4ef9b634092062127db1b618, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ed66873f4ef9b634092062127db1b618, type: 3}
---- !u!4 &508702392 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400016, guid: ed66873f4ef9b634092062127db1b618, type: 3}
-  m_PrefabInstance: {fileID: 508702391}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &508705514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14948,6 +14874,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3a89461c7842846909b98614415755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
+  OnPKeyPressed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1095836200
 Transform:
   m_ObjectHideFlags: 0
@@ -27586,7 +27515,6 @@ Transform:
   m_Children:
   - {fileID: 88153346}
   - {fileID: 1842932941}
-  - {fileID: 508702392}
   - {fileID: 1422054011}
   - {fileID: 1445680045}
   - {fileID: 1798189401}
