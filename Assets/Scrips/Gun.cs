@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     private Rotate rotateScript;
     [SerializeField]
     private GunData gunData;
+    public GunData GunData => gunData;
     [SerializeField]
     private Transform bulletPivot;
     [SerializeField]
@@ -20,32 +21,37 @@ public class Gun : MonoBehaviour
     private Text ammoText; ///* falto esta
     private float nextFireTime;
     private int totalBullets;
-    private int cartridgeBullets; ///* Nuevo´´
-    ///* Agregando para llaves
+    private int cartridgeBullets; ///* Nuevo**
     private UnityEvent onGunEmpty = new UnityEvent();
+    public bool IsGunFull => totalBullets == gunData. totalBullets;
     public UnityEvent OnGunEmpty
     {
         set => onGunEmpty = value;
         get => onGunEmpty;
-    } ///* cerrando la llave
-    ///* public UnityEvent OnGunEmpty => onGunEmpty;
-    public void GrabGun(Transform gunPosition, Text bulletsText)
+    }///* public UnityEvent OnGunEmpty => onGunEmpty;
+    public void ChargeTotalBullets() ///* reemplazado Entero
     {
-        ammoText = bulletsText; ///* * del  nuevo´´
-        nextFireTime = 0f; ///* para que la bala dispare
-        totalBullets = gunData.totalBullets; ///*NuevaBalas
+        totalBullets = gunData. totalBullets;
+    }
+    public void GrabGun(Transform gunPosition, Text bulletsText, bool isNew = true)
+    {
+        ammoText = bulletsText;
+        nextFireTime = 0f;
+        if (isNew)
+        {
+            totalBullets = gunData.totalBullets;
+            ChargeGun(false);
+        }
         transform. SetParent (gunPosition);
         transform. localPosition = Vector3. zero;
-        transform. localRotation = Quaternion.identity; //*
-                  ///*"Idle"
+        transform. localRotation = Quaternion.identity; //**
         animator.Play("Grab", 0, 0f);
         rotateScript.canRotate = false;
         gameObject.GetComponent<Collider>().enabled = false;
-        ChargeGun(false) ; ///*Tiene una abajo
-    } ///* Nuevo entero segunda
+        UpdateAmmoText();
+    }
     public void ChargeGun(bool playAnimation = true)
-    {
-    ///*if (totalBullets <= 0) return;
+    {///*if (totalBullets <= 0) return;
         if (totalBullets <= 0 || cartridgeBullets == gunData.cartridgeSize) return;
         SoundManager.instance.Play(gunData.reloadSoundName); ///*shots and drink
         if (playAnimation) ///* Ramplazando cosas
