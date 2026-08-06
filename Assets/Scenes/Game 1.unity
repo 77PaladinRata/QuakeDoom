@@ -2696,39 +2696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1b141e59a0e054fbf8852d51aa96dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  gunPosition: {fileID: 1744018425}
-  inputManager: {fileID: 1095836199}
-  ammoText: {fileID: 963401595}
-  onGunGrabbed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2129569272}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  onGunDropped:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2129569272}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  gunManager: {fileID: 0}
 --- !u!114 &339093161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7568,6 +7536,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
   OnPKeyPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnScrollUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OnScrollDown:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &1095836200
