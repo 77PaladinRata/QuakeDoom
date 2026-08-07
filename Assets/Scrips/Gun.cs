@@ -18,17 +18,36 @@ public class Gun : MonoBehaviour
     private GameObject bulletPrefab;
     [SerializeField]
     private GameObject fireParticlesPrefab;
-    private Text ammoText; ///* falto esta
+    [SerializeField] ///* NUEVO
+    private LayerMask aimLayerMask;
+    private Text ammoText;
     private float nextFireTime;
     private int totalBullets;
-    private int cartridgeBullets; ///* Nuevo**
+    private int cartridgeBullets;
     private UnityEvent onGunEmpty = new UnityEvent();
+    private Camera gunCamera; ///* Arriba es Igua a Abajo
+    private UnityEvent onGunShoot = new UnityEvent(); ///* casi
+    public UnityEvent OnGunShoot => onGunShoot;
     public bool IsGunFull => totalBullets == gunData. totalBullets;
+    private float rayDistance = 1000f;
     public UnityEvent OnGunEmpty
     {
         set => onGunEmpty = value;
         get => onGunEmpty;
-    }///* public UnityEvent OnGunEmpty => onGunEmpty;
+    }
+    private void Awake() ////*NUEVA PARA LA CAMARA
+    {
+        gunCamera = Camera.main;
+    }
+    private bool TryGetHit(out RaycastHit hit) ///* NUEVO ENTERO
+    {
+        Ray ray = gunCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        return Physics.Raycast(ray, out hit, rayDistance,aimLayerMask);
+    }
+    public bool IsAimingEnemy() ///* NUEVO OTRO
+    {
+        return TryGetHit(out RaycastHit hit) && hit.collider.CompareTag("Enemy");
+    }
     public void ChargeTotalBullets() ///* reemplazado Entero
     {
         totalBullets = gunData. totalBullets;
@@ -93,19 +112,23 @@ public class Gun : MonoBehaviour
             enemy.GetComponent<Health>().TakeDamage(gunData.damage);
         }
     }
-    public void Shoot()
+    public void Shoot() ///* BORRO Algunas
     {
+        onGunShoot?.Invoke();
         PoolManager.Instance.GetObject(fireParticlesPrefab, bulletPivot.position);
-        float rayDistance = 1000f;
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        ///* float rayDistance = 1000f;
+        ///* Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        ///* Vector3 targetPoint;
+    ///*if(Physics.Raycast(ray, out RaycastHit hit, rayDistance))
         Vector3 targetPoint;
-        if(Physics.Raycast(ray, out RaycastHit hit, rayDistance))
+        if (TryGetHit(out RaycastHit hit))
         {
             targetPoint = hit.point;  ///* Para que dispare
             DamangeEnemy(hit.collider.gameObject);
         }
         else
         {
+            Ray ray = gunCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             targetPoint = ray.GetPoint(rayDistance);
         }
         Vector3 direction = (targetPoint - transform.position).normalized;

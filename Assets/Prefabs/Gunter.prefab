@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 8306596026184205543}
   - component: {fileID: 5429074061348565918}
   - component: {fileID: 1351916433697270410}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gunter
   m_TagString: Enemy
   m_Icon: {fileID: 2800000, guid: 58de58939a6067c46bf0e5ddd893bd04, type: 3}

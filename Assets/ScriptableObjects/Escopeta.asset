@@ -21,3 +21,4 @@ MonoBehaviour:
   shootSoundName: Lightning Three
   reloadSoundName: Recarga magica3
   dropSoundName: Dropeo Magico
+  sprite: {fileID: 21300000, guid: 0628e9cc92bbf1b45a72aa8190f2030c, type: 3}

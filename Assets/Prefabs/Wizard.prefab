@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 4001009208155529972}
   - component: {fileID: 6785673109085932596}
   - component: {fileID: 1764219313249140519}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wizard
   m_TagString: Enemy
   m_Icon: {fileID: 2800000, guid: 5a6bd793e147ac64e98bf339553fd728, type: 3}

@@ -483,7 +483,7 @@ GameObject:
   m_Layer: 0
   m_Name: Escopeta Espada
   m_TagString: Gun
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: 0628e9cc92bbf1b45a72aa8190f2030c, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -557,6 +557,9 @@ MonoBehaviour:
   bulletPivot: {fileID: 5890845272304872095}
   bulletPrefab: {fileID: 3221781927391641339, guid: dc60c7c381979784ea4e7dcf0686af8c, type: 3}
   fireParticlesPrefab: {fileID: 149416465775728100, guid: 625e82b7f7f38624387070ea5b781547, type: 3}
+  aimLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &2459771249705794527
 GameObject:
   m_ObjectHideFlags: 0

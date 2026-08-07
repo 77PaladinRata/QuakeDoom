@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 7299331560952301169}
   - component: {fileID: 3222577927824652031}
   - component: {fileID: 3400749716318324672}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Marciano
   m_TagString: Enemy
   m_Icon: {fileID: 2800000, guid: eb56188e070e442c4b93b8856b5c1ab0, type: 3}

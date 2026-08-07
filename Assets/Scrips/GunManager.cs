@@ -13,6 +13,10 @@ public class GunManager : MonoBehaviour
     private Transform gunPosition;
     [SerializeField]
     private Text ammoText;
+    [SerializeField]    ///* ICONO Arme
+    private Image gunIcon;
+    [SerializeField] 
+    private Scope scope;///* escopeta
     [SerializeField]
     private InputManager inputManager;
     private Gun currentGun;
@@ -36,13 +40,15 @@ public class GunManager : MonoBehaviour
             Destroy(gun.gameObject);
             return;
         }
-        guns.Add (gun) ;
-        currentGun ?. gameObject.SetActive(false);
+        guns.Add (gun) ; ///**X5 currenGuns
+        currentGun?. gameObject.SetActive(false);
         currentGun = gun;
         currentGun.GrabGun(gunPosition, ammoText);
         currentGun.OnGunEmpty.AddListener(DropGun);
+        currentGun.OnGunShoot.AddListener(scope.PlayFireAnimation);
         onGunGrabbed ?. Invoke();
         currentGunIndex = guns. IndexOf(currentGun);
+        SetIcon(currentGun.GunData.sprite);
     }
     public void SwitchUpGun()
     {
@@ -66,9 +72,22 @@ public class GunManager : MonoBehaviour
     {
         if (guns.Count <= 1) return;
         currentGun.gameObject.SetActive(false);
+        ///* currentGun = guns[currentGunIndex];
+        ///* currentGun.gameObject.SetActive(true);
+        ///* currentGun.GrabGun(gunPosition, ammoText, false);
+        SetGun();
+    } ///* CODIGO  NUEVO
+    public void SetGun()
+    {
         currentGun = guns[currentGunIndex];
         currentGun.gameObject.SetActive(true);
         currentGun.GrabGun(gunPosition, ammoText, false);
+        SetIcon(currentGun.GunData.sprite);
+    } ///* OTRO NUEVO
+    public void SetIcon(Sprite sprite)
+    {
+        gunIcon.sprite = currentGun.GunData.sprite; ///* Icon
+        gunIcon.SetNativeSize();
     }
     public void DropAllGuns()
     {
@@ -83,14 +102,16 @@ public class GunManager : MonoBehaviour
     public void DropGun()
     {
         currentGun.OnGunEmpty.RemoveListener(DropGun);
+        currentGun.OnGunShoot.RemoveListener(scope.PlayFireAnimation);
         guns.Remove(currentGun);
         Destroy(currentGun.gameObject);
         if (guns.Count > 0)
         {
             currentGunIndex = guns.Count - 1;
-            currentGun = guns[currentGunIndex];
-            currentGun.gameObject.SetActive(true);
-            currentGun.GrabGun(gunPosition, ammoText, false);
+            ///* currentGun = guns[currentGunIndex];
+            ///* currentGun.gameObject.SetActive(true);
+            ///* currentGun.GrabGun(gunPosition, ammoText, false);
+            SwitchGun();
         }
         else
         {
@@ -106,7 +127,14 @@ public class GunManager : MonoBehaviour
         if (inputManager.RightButtonPressed)
         {
             currentGun.ChargeGun();
+        } ///* estos si son nuevos IFs
+        if (currentGun.IsAimingEnemy())
+        {
+            scope.ChangeToAimingColor();
+        }
+        else
+        {
+            scope.ChangeToIdleColor();
         }
     }
-
 }

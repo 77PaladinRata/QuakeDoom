@@ -1129,7 +1129,7 @@ GameObject:
   m_Layer: 0
   m_Name: Gun Automatic
   m_TagString: Gun
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: 8719ee58711b3c24b873a1b03d4c72af, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1203,6 +1203,9 @@ MonoBehaviour:
   bulletPivot: {fileID: 6500932664127359082}
   bulletPrefab: {fileID: 4613637443303385384, guid: b154f09688eb08c40a76e3392dfc361a, type: 3}
   fireParticlesPrefab: {fileID: 8519123693758246334, guid: b5e731e25d10a4748aa80021c3942921, type: 3}
+  aimLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &2831024059975268917
 GameObject:
   m_ObjectHideFlags: 0
