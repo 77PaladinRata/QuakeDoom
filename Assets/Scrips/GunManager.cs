@@ -128,7 +128,8 @@ public class GunManager : MonoBehaviour
         {
             currentGun.ChargeGun();
         } ///* estos si son nuevos IFs
-        if (currentGun.IsAimingEnemy())
+    ///*if (currentGun.IsAimingEnemy())
+        if (currentGun && currentGun. IsAimingEnemy())
         {
             scope.ChangeToAimingColor();
         }
