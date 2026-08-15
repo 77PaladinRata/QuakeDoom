@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTank
   animator: {fileID: 5709880505545079074}
-  damage: 40
+  damage: 44
   range: 8
   fireRate: 2
   shootPivot: {fileID: 3554931966980572377}
@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   healthBar: {fileID: 2622392729066566148}
-  maxHealth: 100
+  maxHealth: 120
   onDeath:
     m_PersistentCalls:
       m_Calls:

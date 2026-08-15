@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySniper
   animator: {fileID: 6324838387105445026}
-  damage: 66
+  damage: 60
   range: 15
   fireRate: 3
   aimTime: 4

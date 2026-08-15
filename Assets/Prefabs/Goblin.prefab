@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   healthBar: {fileID: 8383230559691742054}
-  maxHealth: 100
+  maxHealth: 80
   onDeath:
     m_PersistentCalls:
       m_Calls:
