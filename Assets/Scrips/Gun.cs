@@ -167,7 +167,7 @@ public class Gun : MonoBehaviour
         if (totalBullets <= 0 && cartridgeBullets <= 0)
         {
             SoundManager.instance.Play(gunData.dropSoundName);///*shots and drink
-            onGunEmpty ?. Invoke();
+            onGunEmpty?.Invoke();
             return;
         }
     ///*ifs Agegado en el medio de este

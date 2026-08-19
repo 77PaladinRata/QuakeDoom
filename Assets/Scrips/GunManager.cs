@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class GunManager : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField] 
     private UnityEvent onGunGrabbed;
     [SerializeField]
     private UnityEvent onGunDropped;
@@ -13,10 +13,10 @@ public class GunManager : MonoBehaviour
     private Transform gunPosition;
     [SerializeField]
     private Text ammoText;
-    [SerializeField]    ///* ICONO Arme
+    [SerializeField]
     private Image gunIcon;
-    [SerializeField] 
-    private Scope scope;///* escopeta
+    [SerializeField]
+    private Scope scope;
     [SerializeField]
     private InputManager inputManager;
     private Gun currentGun;
@@ -24,15 +24,15 @@ public class GunManager : MonoBehaviour
     private int currentGunIndex = 0;
     private void Awake()
     {
-        onGunDropped ?. Invoke();
+        onGunDropped?.Invoke();
     }
     public void GrabGun(Gun gun)
     {
         Gun existingGun = guns.Find(listGun => 
-            listGun.GunData == gun.GunData); ///*?????
+            listGun.GunData == gun.GunData);
         if (existingGun != null)
         {
-            if (existingGun.IsGunFull)
+            if(existingGun.IsGunFull)
             {
                 return;
             }
@@ -40,20 +40,20 @@ public class GunManager : MonoBehaviour
             Destroy(gun.gameObject);
             return;
         }
-        guns.Add (gun) ; ///**X5 currenGuns
-        currentGun?. gameObject.SetActive(false);
+        guns.Add(gun);
+        currentGun?.gameObject.SetActive(false);
         currentGun = gun;
         currentGun.GrabGun(gunPosition, ammoText);
         currentGun.OnGunEmpty.AddListener(DropGun);
         currentGun.OnGunShoot.AddListener(scope.PlayFireAnimation);
-        onGunGrabbed ?. Invoke();
-        currentGunIndex = guns. IndexOf(currentGun);
+        onGunGrabbed?.Invoke();
+        currentGunIndex = guns.IndexOf(currentGun);
         SetIcon(currentGun.GunData.sprite);
     }
     public void SwitchUpGun()
     {
-       currentGunIndex++;
-       if (currentGunIndex >= guns.Count)
+        currentGunIndex++;
+        if (currentGunIndex >= guns.Count)
         {
             currentGunIndex = 0;
         }
@@ -61,7 +61,7 @@ public class GunManager : MonoBehaviour
     }
     public void SwitchDownGun()
     {
-        currentGunIndex --;
+        currentGunIndex--;
         if (currentGunIndex < 0)
         {
             currentGunIndex = guns.Count - 1;
@@ -72,21 +72,18 @@ public class GunManager : MonoBehaviour
     {
         if (guns.Count <= 1) return;
         currentGun.gameObject.SetActive(false);
-        ///* currentGun = guns[currentGunIndex];
-        ///* currentGun.gameObject.SetActive(true);
-        ///* currentGun.GrabGun(gunPosition, ammoText, false);
         SetGun();
-    } ///* CODIGO  NUEVO
+    }
     public void SetGun()
     {
         currentGun = guns[currentGunIndex];
         currentGun.gameObject.SetActive(true);
         currentGun.GrabGun(gunPosition, ammoText, false);
         SetIcon(currentGun.GunData.sprite);
-    } ///* OTRO NUEVO
+    }
     public void SetIcon(Sprite sprite)
     {
-        gunIcon.sprite = currentGun.GunData.sprite; ///* Icon
+        gunIcon.sprite = sprite;
         gunIcon.SetNativeSize();
     }
     public void DropAllGuns()
@@ -108,10 +105,7 @@ public class GunManager : MonoBehaviour
         if (guns.Count > 0)
         {
             currentGunIndex = guns.Count - 1;
-            ///* currentGun = guns[currentGunIndex];
-            ///* currentGun.gameObject.SetActive(true);
-            ///* currentGun.GrabGun(gunPosition, ammoText, false);
-            SwitchGun();
+            SetGun();
         }
         else
         {
@@ -122,14 +116,13 @@ public class GunManager : MonoBehaviour
     private void Update()
     {
         if (currentGun == null) return;
-        currentGun.HandleFire(inputManager.LeftButtonPressed, 
-            inputManager.LeftButtonHeld);       ///*?????
+        currentGun.HandleFire(inputManager.LeftButtonPressed,
+            inputManager.LeftButtonHeld);
         if (inputManager.RightButtonPressed)
         {
             currentGun.ChargeGun();
-        } ///* estos si son nuevos IFs
-    ///*if (currentGun.IsAimingEnemy())
-        if (currentGun && currentGun. IsAimingEnemy())
+        }
+        if (currentGun && currentGun.IsAimingEnemy())
         {
             scope.ChangeToAimingColor();
         }
@@ -138,4 +131,5 @@ public class GunManager : MonoBehaviour
             scope.ChangeToIdleColor();
         }
     }
+
 }
