@@ -234,7 +234,7 @@ MonoBehaviour:
   animator: {fileID: 1041012723030973181}
   damage: 60
   speed: 4
-  attackRange: 2
+  attackRange: 4
   damageRange: 4
   attackTime: 1
 --- !u!1 &5101034138896919174

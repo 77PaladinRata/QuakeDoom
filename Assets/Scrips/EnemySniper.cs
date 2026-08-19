@@ -24,7 +24,7 @@ public class EnemySniper : Enemy
         base.OnEnable();
         laserBeam.ActivateLaser(false); ///* nueva
         nextFireTime = 0f;
-        transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+        ///*transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
         animator.Play("Idle", 0, 0f);
         SoundManager.instance.Play("bipbupmiau");////*** SONIDO APARECER ///********* ////********
     }
